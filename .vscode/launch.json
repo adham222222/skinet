@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+  {
+      "name": "Launch API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/API/bin/Debug/net9.0/API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/API",
+      "preLaunchTask": "build"
+    }
+  ]
+}
