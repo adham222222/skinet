@@ -11,7 +11,6 @@ public class GenericRepository<T>(StoreContext ctx) : IGenericRepository<T> wher
     {
         ctx.Set<T>().Add(entity);
     }
-
     public async Task<int> CountAsync(ISpecification<T> spec)
     {
         var query = ctx.Set<T>().AsQueryable();
@@ -20,7 +19,6 @@ public class GenericRepository<T>(StoreContext ctx) : IGenericRepository<T> wher
 
         return await query.CountAsync();
     }
-
     public void Delete(T entity)
     {
         ctx.Set<T>().Remove(entity);
