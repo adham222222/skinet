@@ -59,11 +59,7 @@ public class GenericRepository<T>(StoreContext ctx) : IGenericRepository<T> wher
         return await ApplySpecification(spec).ToListAsync();
     }
 
-    public async Task<bool> SaveChangesAsync()
-    {
-        return await ctx.SaveChangesAsync() > 0;
-    }
-
+    
     public void Update(T entity)
     {
         ctx.Set<T>().Attach(entity);

@@ -23,5 +23,19 @@ public class StoreContextSeed
         }
 
         
+        if (!ctx.deliveryMethods.Any())
+        {
+            var DeliveryMethodData = await File.ReadAllTextAsync("../Infrastructure/Data/SeedData/delivery.json");
+
+
+            var deliveryMethods = JsonSerializer.Deserialize<List<DeliveryMethod>>(DeliveryMethodData);
+
+            if (deliveryMethods == null) return;
+
+            ctx.deliveryMethods.AddRange(deliveryMethods);
+
+            await ctx.SaveChangesAsync();
+        }
     }
+   
 }

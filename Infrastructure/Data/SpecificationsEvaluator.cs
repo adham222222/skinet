@@ -1,6 +1,7 @@
 using System;
 using CORE.Entities;
 using CORE.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Data;
@@ -34,6 +35,9 @@ public class SpecificationsEvaluator<T> where T : BaseEntity
         {
             query = query.Skip(spec.Skip).Take(spec.Take);
         }
+
+        query = spec.Includes.Aggregate(query,(current,include)=>current.Include(include));
+        query = spec.IncludeStrings.Aggregate(query,(current,include)=>current.Include(include));
         return query;
     }
 

@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "API/API.csproj",
+      "use": "@vercel/dotnet",
+      "config": {
+        "runtime": "net9.0",
+        "appProject": "API/API.csproj" 
+      }
+    }
+  ],
+ "routes": [
+  {
+    "src": "/(.*)",
+    "dest": "/api/$1",
+    "status": 200
+  }
+]
+}
