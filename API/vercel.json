@@ -1,35 +1,5 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "API/API.csproj",
-      "use": "@vercel/dotnet",
-      "config": {
-        "runtime": "net9.0",
-        "appProject": "API/API.csproj",
-        "buildCommand": "dotnet publish -c Release -r linux-x64 -o ./publish",
-        "outputDirectory": "publish"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/api/status",  
-      "status": 200
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1",
-      "headers": {
-        "Content-Type": "application/json"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "status": 404
-    }
-  ],
-  "regions": ["iad1"],
-  "public": false 
+  "rewrites":{
+    "source":"/(.*)","destination":"/"
+  }
 }
